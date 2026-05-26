@@ -1,199 +1,203 @@
 # RepoLens AI
 
-![Python](https://img.shields.io/badge/Python-3.10+-blue?logo=python&logoColor=white)
-![Streamlit](https://img.shields.io/badge/Built%20with-Streamlit-FF4B4B?logo=streamlit&logoColor=white)
-![AI](https://img.shields.io/badge/AI-Powered-9B59B6?logo=openai&logoColor=white)
-![License](https://img.shields.io/badge/License-MIT-green)
-![PRs](https://img.shields.io/badge/PRs-Welcome-brightgreen)
+<p align="center">
+  <img src="assets/banner.svg" alt="RepoLens AI" width="100%" />
+</p>
 
-**AI-powered GitHub repository auditor that turns any public repo into a quality report, roadmap, and improvement plan.**
+<p align="center">
+  <strong>AI-powered GitHub repository auditor that turns any public repo into a quality report, roadmap, and improvement plan.</strong>
+</p>
 
-RepoLens AI analyzes any public GitHub repository and generates comprehensive quality scores, tech stack detection, README analysis, security checklists, AI-powered recommendations, suggested GitHub issues, and a 7-day improvement roadmap — all in one click.
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.10+-3776AB?style=flat-square&logo=python&logoColor=white" />
+  <img src="https://img.shields.io/badge/Built%20with-Streamlit-FF4B4B?style=flat-square&logo=streamlit&logoColor=white" />
+  <img src="https://img.shields.io/badge/AI-Powered-10A37F?style=flat-square&logo=openai&logoColor=white" />
+  <img src="https://img.shields.io/github/license/garaptross1-blip/repolens-ai?style=flat-square&color=2EA043" />
+  <img src="https://img.shields.io/github/stars/garaptross1-blip/repolens-ai?style=flat-square&color=yellow" />
+  <img src="https://img.shields.io/github/last-commit/garaptross1-blip/repolens-ai?style=flat-square" />
+</p>
 
 ---
 
-## 🚀 Features
+## What It Does
 
-- **📊 Multi-Dimensional Scoring** — Documentation, Structure, Maintainability, and Product-Readiness scores
-- **🏗️ Tech Stack Detection** — Auto-detects languages, frameworks, DevOps tools, and dependencies
-- **📝 README Quality Analysis** — 12-point checklist with weighted scoring
-- **🔒 Security & Config Checklist** — Checks for .env templates, .gitignore, security policies, and more
-- **🤖 AI Maintainer Report** — LLM-powered analysis with actionable recommendations
+Paste any public GitHub URL → get instant analysis:
+
+- **📊 Multi-Dimensional Scoring** — Documentation, Structure, Maintainability, Product-Readiness, Overall
+- **🏗️ Tech Stack Detection** — 30+ frameworks auto-detected (React, Next.js, Django, FastAPI, etc.)
+- **📝 README Quality Analysis** — 12-point weighted checklist
+- **🔒 Security & Config Audit** — Checks for .env templates, .gitignore, security policies
+- **🤖 AI Maintainer Report** — GPT-powered analysis with strengths, weaknesses, and recommendations
 - **📋 Suggested GitHub Issues** — Auto-generated issues with labels
-- **🗺️ 7-Day Roadmap** — Day-by-day improvement plan tailored to the repo
-- **📥 Export Reports** — Download as Markdown or JSON
+- **🗺️ 7-Day Roadmap** — Day-by-day improvement plan
+- **📥 Export** — Download as Markdown or JSON
 
 ---
 
-## 📸 How It Works
-
-```
-1. Paste a GitHub URL    →    2. RepoLens fetches & analyzes    →    3. Get your report
-```
-
----
-
-## 🛠️ Tech Stack
-
-| Component | Technology |
-|-----------|-----------|
-| Frontend | Streamlit |
-| Backend | Python 3.10+ |
-| AI Engine | OpenAI API (GPT-4o-mini) |
-| Data Source | GitHub Raw URLs + GitHub API |
-| Parsing | requests, BeautifulSoup, regex |
-| Output | Markdown + JSON |
-
----
-
-## ⚡ Quick Start
-
-### Prerequisites
-
-- Python 3.10+
-- OpenAI API key ([get one here](https://platform.openai.com/api-keys))
-
-### Installation
+## Quick Start
 
 ```bash
+# Clone
 git clone https://github.com/garaptross1-blip/repolens-ai.git
 cd repolens-ai
 
+# Setup
 python -m venv venv
-source venv/bin/activate  # Windows: venv\Scripts\activate
-
+source venv/bin/activate
 pip install -r requirements.txt
-```
 
-### Configuration
-
-```bash
+# Configure
 cp .env.example .env
-# Edit .env and add your OpenAI API key
-```
+# Add your OpenAI API key to .env
 
-### Run
-
-```bash
+# Run
 streamlit run app.py
 ```
 
-Open [http://localhost:8501](http://localhost:8501) in your browser.
+Open [http://localhost:8501](http://localhost:8501)
 
 ---
 
-## 📊 Scoring System
+## How It Works
 
-### README Quality (0-100)
-Checks for: Title, Description, Installation, Usage, Features, Environment Variables, License, Contributing, Badges, Screenshots, API Docs, Testing.
-
-### Project Structure (0-100)
-Checks for: README, License, .gitignore, Dependencies, .env.example, Dockerfile, CI/CD, Contributing Guide, Changelog, Security Policy.
-
-### Composite Scores
-- **Documentation** — README quality weighted score
-- **Structure** — File presence and organization
-- **Maintainability** — CI, Docker, changelog, security policy
-- **Product-Readiness** — License, deps, Docker, env template
-- **Overall** — Weighted average of all dimensions
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                         User Input                               │
+│                    GitHub Repository URL                          │
+└──────────────────────────┬──────────────────────────────────────┘
+                           │
+         ┌─────────────────┼─────────────────┐
+         ▼                 ▼                 ▼
+   ┌──────────┐    ┌──────────────┐    ┌──────────┐
+   │  GitHub   │    │   GitHub     │    │  Branch  │
+   │  Raw URL  │    │   API        │    │ Detection│
+   │  Fetcher  │    │  (metadata)  │    │          │
+   └─────┬────┘    └──────┬───────┘    └────┬─────┘
+         │                │                  │
+         └────────────────┼──────────────────┘
+                          ▼
+              ┌───────────────────────┐
+              │    Analysis Pipeline   │
+              │                        │
+              │  • Tech Stack Detect   │
+              │  • README Quality      │
+              │  • Structure Scoring   │
+              │  • Security Checklist  │
+              └───────────┬───────────┘
+                          │
+              ┌───────────▼───────────┐
+              │    AI Engine (GPT)     │
+              │                        │
+              │  • Project Summary     │
+              │  • Strengths/Weaknesses│
+              │  • Suggested Issues    │
+              │  • 7-Day Roadmap       │
+              └───────────┬───────────┘
+                          │
+              ┌───────────▼───────────┐
+              │    Report Builder      │
+              │                        │
+              │  • Markdown Report     │
+              │  • JSON Export         │
+              │  • Score Dashboard     │
+              └───────────────────────┘
+```
 
 ---
 
-## 💡 Example Repos to Try
+## Scoring System
 
-| Repository | What to Look For |
+| Dimension | What It Measures |
 |-----------|-----------------|
-| `fastapi/fastapi` | Gold standard Python project |
-| `vercel/next.js` | Enterprise-grade JS framework |
-| `langchain-ai/langchain` | AI/ML project structure |
-| `streamlit/streamlit` | Well-documented Python tool |
+| **Documentation** | README quality (title, description, install, usage, features, etc.) |
+| **Structure** | File organization (LICENSE, .gitignore, deps, Dockerfile, CI, etc.) |
+| **Maintainability** | CI/CD, Docker, changelog, security policy, contributing guide |
+| **Product-Readiness** | License, dependencies, Docker, env template, stack detection |
+| **Overall** | Weighted average of all dimensions |
+
+**Grades:** A+ (90+) → A (80+) → B (70+) → C (60+) → D (50+) → F (<50)
 
 ---
 
-## 📁 Project Structure
+## Tech Stack
+
+| Component | Technology |
+|-----------|-----------|
+| Frontend | Streamlit (dark theme) |
+| Backend | Python 3.10+ |
+| AI Engine | OpenAI GPT-4o-mini |
+| Data | GitHub Raw URLs + GitHub API |
+| Export | Markdown + JSON |
+
+---
+
+## Project Structure
 
 ```
 repolens-ai/
-├── app.py                    # Streamlit main application
-├── requirements.txt          # Python dependencies
-├── .env.example              # Environment variable template
-├── README.md                 # This file
-├── LICENSE                   # MIT License
+├── app.py                    # Streamlit dashboard (345 lines)
 ├── src/
-│   ├── __init__.py
 │   ├── github_fetcher.py     # GitHub file fetching & URL parsing
 │   ├── analyzer.py           # Tech stack, README, structure analysis
 │   ├── scoring.py            # Composite scoring engine
 │   ├── ai_engine.py          # LLM-powered analysis (OpenAI/Groq)
 │   └── report_builder.py     # Markdown report assembly
-├── examples/
-│   └── sample_report.md      # Example output report
-├── assets/
-│   └── banner.png            # Project banner
-└── docs/
-    ├── architecture.md       # System architecture
-    └── workflow.md            # Analysis workflow
+├── .streamlit/config.toml    # Dark theme config
+├── .github/workflows/ci.yml  # GitHub Actions CI
+├── assets/banner.svg          # Project banner
+├── docs/                      # Architecture & workflow docs
+├── examples/                  # Sample report output
+├── requirements.txt
+├── .env.example
+├── CONTRIBUTING.md
+├── LICENSE (MIT)
+└── README.md
 ```
 
 ---
 
-## 🗺️ Roadmap
+## Roadmap
 
-- [x] GitHub raw file fetching
-- [x] Tech stack detection
-- [x] README quality analysis
-- [x] Multi-dimensional scoring
-- [x] AI-powered analysis
+- [x] GitHub raw file fetching with branch detection
+- [x] Tech stack detection (30+ frameworks)
+- [x] README quality analysis (12-point checklist)
+- [x] Multi-dimensional scoring system
+- [x] AI-powered analysis via OpenAI
+- [x] Dark theme Streamlit UI
 - [x] Markdown & JSON export
-- [ ] GitHub API integration (issues, PRs)
+- [x] GitHub Actions CI
+- [ ] GitHub API integration (auto-create issues)
 - [ ] Batch repository comparison
 - [ ] Local LLM support (Ollama)
-- [ ] GitHub Action for CI/CD integration
-- [ ] Repository trend tracking
+- [ ] Streamlit Cloud deployment
 - [ ] Custom scoring weights
-- [ ] API endpoint for programmatic access
+- [ ] REST API endpoint
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
-Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+Contributions welcome! See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ```bash
-# Fork the repo
 git clone https://github.com/garaptross1-blip/repolens-ai.git
 cd repolens-ai
-
-# Create a feature branch
 git checkout -b feature/your-feature
-
-# Make your changes and test
-streamlit run app.py
-
-# Submit a PR
+# Make changes
+# Submit PR
 ```
 
 ---
 
-## 📄 License
+## License
 
-This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
-
----
-
-## 🙏 Acknowledgments
-
-- [Streamlit](https://streamlit.io/) for the amazing web framework
-- [OpenAI](https://openai.com/) for the GPT API
-- [GitHub API](https://docs.github.com/en/rest) for repository data
-- The open-source community for inspiration
+MIT — see [LICENSE](LICENSE)
 
 ---
 
-<div align="center">
-
-**Built with 🧠 by developers, for developers**
-
-[Report Bug](https://github.com/garaptross1-blip/repolens-ai/issues) · [Request Feature](https://github.com/garaptross1-blip/repolens-ai/issues) · [Star this Repo](https://github.com/garaptross1-blip/repolens-ai)
-
-</div>
+<p align="center">
+  <b>Built with 🧠 by developers, for developers</b><br>
+  <a href="https://github.com/garaptross1-blip/repolens-ai/issues">Report Bug</a> ·
+  <a href="https://github.com/garaptross1-blip/repolens-ai/issues">Request Feature</a> ·
+  <a href="https://github.com/garaptross1-blip/repolens-ai">⭐ Star</a>
+</p>
