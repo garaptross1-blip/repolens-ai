@@ -56,7 +56,7 @@ RepoLens AI analyzes any public GitHub repository and generates comprehensive qu
 ### Installation
 
 ```bash
-git clone https://github.com/yourusername/repolens-ai.git
+git clone https://github.com/garaptross1-blip/repolens-ai.git
 cd repolens-ai
 
 python -m venv venv
@@ -161,7 +161,7 @@ Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for gui
 
 ```bash
 # Fork the repo
-git clone https://github.com/yourusername/repolens-ai.git
+git clone https://github.com/garaptross1-blip/repolens-ai.git
 cd repolens-ai
 
 # Create a feature branch
@@ -194,6 +194,6 @@ This project is licensed under the MIT License — see the [LICENSE](LICENSE) fi
 
 **Built with 🧠 by developers, for developers**
 
-[Report Bug](https://github.com/yourusername/repolens-ai/issues) · [Request Feature](https://github.com/yourusername/repolens-ai/issues) · [Star this Repo](https://github.com/yourusername/repolens-ai)
+[Report Bug](https://github.com/garaptross1-blip/repolens-ai/issues) · [Request Feature](https://github.com/garaptross1-blip/repolens-ai/issues) · [Star this Repo](https://github.com/garaptross1-blip/repolens-ai)
 
 </div>
